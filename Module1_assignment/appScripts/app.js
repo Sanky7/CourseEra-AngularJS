@@ -11,7 +11,8 @@ LunchCheckController.$inject =['$scope'];
 
       $scope.checkQuantity = function(){
         $scope.splitMenu = $scope.menuList.split(",");
-        $scope.splitMenu = $scope.splitMenu.filter(Boolean); //Eliminate empty options
+        // Eliminate empty space
+        $scope.splitMenu = $scope.splitMenu.filter(function(entry) { return entry.trim() != ''; });
         if($scope.splitMenu.length <= 0){
           $scope.message = "Please enter data first!";
           $scope.menuList = " ";//replace multiple spaces with empty
